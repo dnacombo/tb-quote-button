@@ -15,3 +15,7 @@ Temporary (until Thunderbird restarts): *Tools → Developer Tools → Debug Add
 Permanent: the add-on is not signed. Package it with `zip -j quote-selection.xpi manifest.json background.js quote.js quote.svg placement.js placement.json`, then either have it signed for self-distribution on addons.thunderbird.net, or set `xpinstall.signatures.required` to `false` in the Config Editor (this disables signature checking for all add-ons) and use *Install Add-on From File…*.
 
 Close and reopen compose windows after installing or reloading, since the script is only injected into windows opened afterwards.
+
+## License
+
+[MIT](LICENSE)
