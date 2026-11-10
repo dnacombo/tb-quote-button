@@ -4,7 +4,7 @@ A Thunderbird add-on that adds a **Quote** button to the formatting toolbar of t
 
 - **HTML messages:** uses the editor's own Indent/Outdent, so the whole paragraph is quoted even when only part of it is selected. The quote is a `<blockquote type="cite">` with an inline style, so the bar also shows in Gmail and Outlook. The style is set by `QUOTE_STYLE` in `quote.js`.
 - **Plain-text messages:** adds or removes one `> ` level on the selected paragraphs.
-- **Button position:** Thunderbird always appends add-on buttons at the end of the formatting toolbar. `placement.js` is a small [Experiment API](https://developer.thunderbird.net/add-ons/mailextensions/experiments) that moves the button between Indent and Align. If it fails, the button still works, just at the end of the toolbar.
+- **Button position:** Thunderbird always appends add-on buttons at the end of the formatting toolbar. `placement.js` is a small [Experiment API](https://developer.thunderbird.net/add-ons/mailextensions/experiments) that moves the button between Indent and Align. If it fails, the button still works, just at the end of the toolbar. It also greys the button out, like the other formatting buttons, while the cursor is not in the message body.
 
 Tested on Thunderbird 159 (minimum version 128, Manifest V3).
 

@@ -42,9 +42,30 @@ this.quoteButtonPlacement = class extends ExtensionAPI {
         indent.after(button);
       }
     };
-    place();
-    const observer = new win.MutationObserver(place);
-    observer.observe(toolbar, { childList: true });
+    // Grisé comme les autres boutons de mise en forme : on recopie l'état de
+    // cmd_indent (désactivé tant que le curseur n'est pas dans le corps du
+    // message). Thunderbird réécrit "disabled" quand il redessine le bouton
+    // de l'addon : on surveille donc aussi le bouton pour réappliquer l'état.
+    const command = document.getElementById("cmd_indent");
+    const sync = () => {
+      const button = document.getElementById(buttonId);
+      if (!button || !command) return;
+      // Thunderbird pose disabled="" (toggleAttribute), pas "true" : seule la présence compte.
+      const disabled = command.hasAttribute("disabled") && command.getAttribute("disabled") !== "false";
+      if (button.hasAttribute("disabled") !== disabled) {
+        button.toggleAttribute("disabled", disabled);
+      }
+    };
+    const update = () => {
+      place();
+      sync();
+    };
+    update();
+    const observer = new win.MutationObserver(update);
+    observer.observe(toolbar, { childList: true, subtree: true, attributes: true, attributeFilter: ["disabled"] });
+    if (command) {
+      observer.observe(command, { attributes: true, attributeFilter: ["disabled"] });
+    }
     this.observers.set(win, observer);
   }
 
