@@ -1,0 +1,31 @@
+{
+  "manifest_version": 3,
+  "name": "Quote Selection",
+  "version": "1.0.0",
+  "description": "Bouton de la fenêtre de composition : transforme la sélection en citation (barre verticale à gauche).",
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "quote-selection@maximilien.local",
+      "strict_min_version": "128.0"
+    }
+  },
+  "permissions": ["compose", "scripting"],
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "experiment_apis": {
+    "quoteButtonPlacement": {
+      "schema": "placement.json",
+      "parent": {
+        "scopes": ["addon_parent"],
+        "paths": [["quoteButtonPlacement"]],
+        "script": "placement.js"
+      }
+    }
+  },
+  "compose_action": {
+    "default_title": "Citation",
+    "default_icon": "quote.svg",
+    "default_area": "formattoolbar"
+  }
+}

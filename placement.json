@@ -1,0 +1,14 @@
+[
+  {
+    "namespace": "quoteButtonPlacement",
+    "functions": [
+      {
+        "name": "start",
+        "type": "function",
+        "description": "Place le bouton de citation entre les boutons Indent et Align de la barre de mise en forme.",
+        "async": true,
+        "parameters": []
+      }
+    ]
+  }
+]
